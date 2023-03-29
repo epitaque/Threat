@@ -136,15 +136,19 @@ function Threat()
       CastSpellByName(ABILITY_DEFENSIVE_STANCE_THREAT);
     end
 
+    -- [
+    --  Priority list:
+    --  1. 
+    --]
     if (SpellReady(ABILITY_BATTLE_SHOUT_THREAT) and not HasBuff("player", "Ability_Warrior_BattleShout") and rage >= 10) then
       Debug("Battle Shout");
       CastSpellByName(ABILITY_BATTLE_SHOUT_THREAT);
-    elseif (SpellReady(ABILITY_SHIELD_SLAM_THREAT) and rage >= 20 and ShieldSlamLearned()) then
-      Debug("Shield slam");
-      CastSpellByName(ABILITY_SHIELD_SLAM_THREAT);
     elseif (SpellReady(ABILITY_REVENGE_THREAT) and RevengeAvail() and rage >= 5) then
       Debug("Revenge");
       CastSpellByName(ABILITY_REVENGE_THREAT);
+    elseif (SpellReady(ABILITY_BLOODTHIRST_THREAT) and rage >= 30) then
+      Debug("Blood Thirst")
+      CastSpellByName(ABILITY_BLOODTHIRST_THREAT);
     elseif (SpellReady(ABILITY_SUNDER_ARMOR_THREAT) and rage >= 15 and not (HasFiveSunderArmors("target"))) then
       Debug("Sunder armor");
       CastSpellByName(ABILITY_SUNDER_ARMOR_THREAT);
@@ -152,7 +156,6 @@ function Threat()
       Debug("Heroic strike");
       CastSpellByName(ABILITY_HEROIC_STRIKE_THREAT);
     end
-
   end
 end
 
